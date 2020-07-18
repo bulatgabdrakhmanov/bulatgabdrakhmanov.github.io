@@ -1,0 +1,42 @@
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: $mainFontSize;
+    font-weight: $mainFontWeight;
+    font-family: $mainFontFamily;
+    color: $mainFontColor;
+    text-align: left;
+    background: $mainBackground;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+a {
+    color: $mainFontColor;
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+}

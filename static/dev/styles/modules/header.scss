@@ -1,0 +1,14 @@
+.header {
+    background:#0043A4;
+
+    .github-link {
+        padding: 5px 0;
+        width: 20px;
+        height: 20px;
+        display: block;
+
+        svg {
+            fill: $lightColor;
+        }
+    }
+}
