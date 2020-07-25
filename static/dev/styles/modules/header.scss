@@ -2,13 +2,39 @@
     background:#0043A4;
 
     .github-link {
-        padding: 5px 0;
-        width: 20px;
-        height: 20px;
+
+
         display: block;
 
         svg {
             fill: $lightColor;
         }
+    }
+}
+
+.nav {
+    padding: 5px 0;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__link {
+        color: $lightColor;
+    }
+
+    .github-link {
+        width: 20px;
+        height: 20px;
+
+        svg {
+            fill: $lightColor;
+        }
+    }
+
+    .email-link {
+        font-weight: 600;
     }
 }

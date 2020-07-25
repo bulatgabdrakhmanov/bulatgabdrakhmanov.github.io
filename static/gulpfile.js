@@ -1,13 +1,15 @@
 const gulp          = require("gulp");
-const ts            = require("gulp-typescript");
 const sass          = require("gulp-sass");
 const gcmq          = require("gulp-group-css-media-queries");
 const csso          = require("gulp-csso");
 const rename        = require("gulp-rename");
 const autoprefixer  = require("gulp-autoprefixer");
+const browserify    = require("browserify");
+const tsify         = require("tsify");
+const source        = require("vinyl-source-stream");
 
-const inputFolder = "dev";
-const outputFolder = "prod";
+const inputFolder   = "dev";
+const outputFolder  = "prod";
 
 gulp.task("styles", function() {
     return gulp.src(inputFolder + "/styles/main.scss")
@@ -24,9 +26,19 @@ gulp.task("styles", function() {
 });
 
 gulp.task("scripts", function() {
-    return gulp.src(inputFolder + "/scripts/**/*.ts")
-        .pipe(ts())
-        .pipe(rename({suffix: '.min'}))
+    const jsFiles = gulp.src(inputFolder + "/scripts/**/*.js")
+        .pipe(gulp.dest(outputFolder + "/scripts"));
+
+    return browserify({
+        basedir: '.',
+        debug: true,
+        entries: [inputFolder + '/scripts/main.ts'],
+        cache: {},
+        packageCache: {}
+    })
+        .plugin(tsify, {noImplicitAny: true})
+        .bundle().on('error', (e) => console.log(e))
+        .pipe(source('main.js'))
         .pipe(gulp.dest(outputFolder + "/scripts"));
 });
 
